@@ -10,7 +10,7 @@ class Pyexcs:
     def return_solution(self, e):
         print(f'{Fore.RED}Error:{Style.RESET_ALL} {e}')
         client = OpenAI(api_key=self.api_key)
-        rules = f'What does this error mean?\n\n{str(e)}\n\n Explain in: {self.lang} without line breaks.'
+        rules = f'Give me a explained solution for this in {self.lang} without line breaks:\n\n{str(e)}\n\nProvide code if necessary.'
         translation = client.chat.completions.create(
             model="gpt-3.5-turbo", 
             messages=[{"role": "system", "content": rules}])
